@@ -64,9 +64,9 @@ rl.on('line', (line) => {
                         });
                         break;
                     case 'WAREHOUSES':
-                        console.log('\nWAREHOUSE#');
+                        console.log('\nWAREHOUSE# \tFILLED');
                         getWarehouses().map(val => {
-                            console.log(val.warehouseNumber);
+                            console.log(val.warehouseNumber +"\t"+ val.filled);
                         });
                         break;
                     case 'WAREHOUSE':

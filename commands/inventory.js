@@ -40,8 +40,9 @@ const unstock = (sku, warehouseNumber, quantity) => {
                         warehouse[0].removeFromWarehouse(sku, quantity);
                     }
                 } else {
+                    console.log("Filled:"+warehouse[0].filled +" productQuantity:"+productQuantity +" quantity:"+ quantity )
                     warehouse[0].updateFilled(warehouse[0].filled - productQuantity);
-                    warehouse[0].removeFromWarehouse(sku, quantity - productQuantity);
+                    warehouse[0].removeFromWarehouse(sku, quantity);
                 }
             } else {
                 throw new Error('Please check PRODUCT sku');
