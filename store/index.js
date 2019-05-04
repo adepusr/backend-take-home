@@ -12,3 +12,27 @@ module.exports = {
     PRODUCTS,
     WAREHOUSES
 };
+
+
+// const Store = function () {
+//     let instance;
+//     let products = [];
+//     let warehouses = [];
+//     const createInstance = () => {
+//         return {
+//             products,
+//             warehouses 
+//         };
+//     }
+//     return {
+//         getInstance: () => {
+//             if (!instance) {
+//                 instance = createInstance();
+//             }
+//             return instance;
+//         }
+//     };
+// }();
+// module.exports = {
+//     Store
+// };

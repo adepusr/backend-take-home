@@ -7,10 +7,10 @@ const _ = require('lodash');
     @optional products
 */
 const WareHouse = function (warehouseNumber, limit, filled, products) {
-    this.warehouseNumber= Number(warehouseNumber);
-    this.limit= Number(limit) || Number.MAX_VALUE;
-    this.filled= Number(filled) || 0;
-    this.products= products || [];
+    this.warehouseNumber = Number(warehouseNumber);
+    this.limit = Number(limit) || Number.MAX_VALUE;
+    this.filled = Number(filled) || 0;
+    this.products = products || [];
 }
 
 /*
@@ -63,6 +63,50 @@ WareHouse.prototype.removeFromWarehouse = function (sku, quantity) {
         }
     }
 }
-    
+// ES6 version
+// class WareHouse {
+//     constructor(warehouseNumber, limit = Number.MAX_VALUE, filled = 0, products = []) {
+//         this.warehouseNumber = Number(warehouseNumber);
+//         this.limit = Number(limit);
+//         this.filled = Number(filled);
+//         this.products = products;
+//     }
+//     updateFilled(filled) {
+//         this.filled = filled;
+//     }
+//     addToWarehouse(sku, quantity) {
+//         var prod = this.products.filter(product => {
+//             return product.sku === sku;
+//         });
+//         if(prod.length > 0) {
+//             prod[0].quantity += quantity;
+//         } else {
+//             this.products.push({
+//                 sku, quantity
+//             });
+//         }
+//     }
+//     removeFromWarehouse(sku, quantity) {
+//         var prod = this.products.filter(product => {
+//             return product.sku === sku;
+//         });
+//         if(prod.length > 0) {
+//             if(prod[0].quantity <= quantity) {
+//                 this.products.forEach((val, index) => {
+//                     if(val.sku === sku){
+//                         this.products.splice(index, 1); 
+//                     }
+//                 });
+//             } else {
+//                 this.products.forEach((val, index) => {
+//                     if(val.sku === sku){
+//                         this.products[index].quantity = this.products[index].quantity - quantity;
+//                     }
+//                 });
+//             }
+//         }
+//     }
+// }
+
 module.exports = WareHouse;
     
