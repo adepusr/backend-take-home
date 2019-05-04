@@ -48,19 +48,16 @@ WareHouse.prototype.removeFromWarehouse = function (sku, quantity) {
         return product.sku === sku;
     });
     if(prod.length > 0) {
-        if(prod[0].quantity <= quantity) {
-            this.products.forEach((val, index) => {
-                if(val.sku === sku){
-                    this.products.splice(index, 1); 
-                }
-            });
-        } else {
-            this.products.forEach((val, index) => {
-                if(val.sku === sku){
+        let prodQuantity = prod[0].quantity;
+        this.products.forEach((val, index) => {
+            if(val.sku === sku){
+                if(prodQuantity <= quantity) {
+                    this.products.splice(index, 1);
+                } else {
                     this.products[index].quantity = this.products[index].quantity - quantity;
                 }
-            });
-        }
+            }
+        });
     }
 }
 // ES6 version

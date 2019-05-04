@@ -35,14 +35,14 @@ const unstock = (sku, warehouseNumber, quantity) => {
             if(product.length > 0){
                 const productQuantity = product[0].quantity
                 if(productQuantity >= quantity) {
-                    if((warehouse[0].filled - quantity >= 0)){
-                        warehouse[0].updateFilled(warehouse[0].filled - quantity);
+                    if((warehouse[0].filled - quantity >= 0)) {
                         warehouse[0].removeFromWarehouse(sku, quantity);
+                        warehouse[0].updateFilled(warehouse[0].filled - quantity);
                     }
                 } else {
-                    console.log("Filled:"+warehouse[0].filled +" productQuantity:"+productQuantity +" quantity:"+ quantity )
-                    warehouse[0].updateFilled(warehouse[0].filled - productQuantity);
+                //    console.log("Filled:"+warehouse[0].filled +" productQuantity:"+productQuantity +" quantity:"+ quantity )
                     warehouse[0].removeFromWarehouse(sku, quantity);
+                    warehouse[0].updateFilled(warehouse[0].filled - productQuantity);
                 }
             } else {
                 throw new Error('Please check PRODUCT sku');
