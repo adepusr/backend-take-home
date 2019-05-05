@@ -1,8 +1,7 @@
-var assert = require('assert');
-var { contains } =  require('../../util');
+import assert from 'assert';
+import { contains } from '../../util';
 
 describe('util', function () {
-
   describe('contains', function(){
     var p1 = { name: 'p1', sku: 'sku1' };
     var p2 = { name: 'p1', sku: 'sku2' };

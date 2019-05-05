@@ -1,7 +1,7 @@
-var assert = require('assert');
-const store = require('../../store');
-const { getWarehouse, getWarehouses, addWarehouse, getWarehouseProducts } = require('../../commands/warehouse');
+import assert from 'assert';
+import { getWarehouse, getWarehouses, addWarehouse, getWarehouseProducts } from '../../commands/warehouse';
 
+const store = require('../../store');
 jest.mock('../../store', function(){
     return {
         PRODUCTS: [{ name: 'product1', sku: 'sku1' }, { name: 'product2', sku: 'sku2' }],

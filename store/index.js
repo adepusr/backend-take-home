@@ -14,7 +14,7 @@ module.exports = {
 };
 
 
-// const Store = function () {
+// export const Store = function () {
 //     let instance;
 //     let products = [];
 //     let warehouses = [];
@@ -33,6 +33,3 @@ module.exports = {
 //         }
 //     };
 // }();
-// module.exports = {
-//     Store
-// };

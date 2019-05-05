@@ -1,7 +1,7 @@
-var assert = require('assert');
+import assert from 'assert';
+import { stock, unstock } from '../../commands/inventory';
+
 const store = require('../../store')
-const Warehouse = require('../../models/warehouse');
-const { stock, unstock } = require('../../commands/inventory');
 
 jest.resetModules();
 jest.mock('../../store', function(){

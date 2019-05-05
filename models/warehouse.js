@@ -1,6 +1,4 @@
 /** wareHouse.js POJO **/
-const _ = require('lodash');
-
 /*
     @optional limit
     @optional filled
@@ -60,8 +58,9 @@ WareHouse.prototype.removeFromWarehouse = function (sku, quantity) {
         });
     }
 }
+export default WareHouse;
 // ES6 version
-// class WareHouse {
+// export class WareHouse {
 //     constructor(warehouseNumber, limit = Number.MAX_VALUE, filled = 0, products = []) {
 //         this.warehouseNumber = Number(warehouseNumber);
 //         this.limit = Number(limit);
@@ -105,5 +104,4 @@ WareHouse.prototype.removeFromWarehouse = function (sku, quantity) {
 //     }
 // }
 
-module.exports = WareHouse;
     

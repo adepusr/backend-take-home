@@ -1,10 +1,8 @@
-var assert = require('assert');
-const Product = require('../../models/product');
+import assert from 'assert';
+import Product from '../../models/product';
+import { addProduct, getProducts, getProduct } from '../../commands/product';
+
 const store = require('../../store');
-
-
-const { addProduct, getProducts, getProduct } = require('../../commands/product');
-
 const name = 'product 1';
 const sku = '123-123';
 const product1 = new Product(name, sku);

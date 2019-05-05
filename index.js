@@ -1,11 +1,9 @@
-
-const fs = require('fs');
-const readline = require('readline');
-
-const { errorLog } = require('./util');
-const { stock, unstock } = require('./commands/inventory');
-const { addProduct, getProducts } = require('./commands/product');
-const { addWarehouse, getWarehouses, getWarehouseProducts } = require('./commands/warehouse');
+import fs from 'fs';
+import readline from 'readline';
+import { errorLog } from './util';
+import { stock, unstock } from './commands/inventory';
+import { addProduct, getProducts } from './commands/product';
+import { addWarehouse, getWarehouses, getWarehouseProducts } from './commands/warehouse';
 
 /*
     creating readline interface to make application behave like REPL 

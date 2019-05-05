@@ -1,11 +1,11 @@
-const { getProduct } = require('./product');
-const { getWarehouse } = require('./warehouse');
+import { getProduct } from './product';
+import { getWarehouse } from './warehouse';
 
 /*
     @desc adds given quantity of sku to given warehouse and updates the filled value along with that.
     @throws error if sku | warehouse is not found 
 */
-const stock = (sku, warehouseNumber, quantity) => {
+export const stock = (sku, warehouseNumber, quantity) => {
     var warehouse = getWarehouse(warehouseNumber);
     if (warehouse.length > 0) {
         if (getProduct(sku).length > 0) {
@@ -27,7 +27,7 @@ const stock = (sku, warehouseNumber, quantity) => {
     @desc removes given quantity of sku from given warehouse and updates the filled value along with that.
     @throws error if sku | warehouse is not found 
 */
-const unstock = (sku, warehouseNumber, quantity) => {
+export const unstock = (sku, warehouseNumber, quantity) => {
     var warehouse = getWarehouse(warehouseNumber);
     if (warehouse.length > 0) {
         if (getProduct(sku).length > 0) {
@@ -54,8 +54,3 @@ const unstock = (sku, warehouseNumber, quantity) => {
         throw new Error('Please check WAREHOUSE number');
     }
 }
-
-module.exports = {
-    stock,
-    unstock
-};

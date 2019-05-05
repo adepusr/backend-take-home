@@ -1,4 +1,4 @@
-var assert = require('assert');
+import assert from 'assert';
 const store = require('../../store');
 
 describe('Store Default Values', () => {

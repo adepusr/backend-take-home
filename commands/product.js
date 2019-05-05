@@ -1,12 +1,11 @@
+import { contains } from  '../util';
+import Product from '../models/product';
 let { PRODUCTS } = require('../store');
-const { contains } = require('../util');
-const Product = require("../models/product")
-
 /*
     @desc creates a Product object and addes to Store.PRODUCTS 
     @throws error when sku is already in the Store.PRODUCTS
 */
-const addProduct = (name, sku) => {
+export const addProduct = (name, sku) => {
     if(!contains(PRODUCTS, 'sku', sku)){
         const product = new Product(name, sku);
         PRODUCTS.push(product);
@@ -18,7 +17,7 @@ const addProduct = (name, sku) => {
 /*
     @desc returns all products from Store.PRODUCTS
 */
-const getProducts = () => {
+export const getProducts = () => {
     if(PRODUCTS.length > 0){
         return PRODUCTS;
     } else {
@@ -29,14 +28,8 @@ const getProducts = () => {
 /*
     @desc returns products from Store.PRODUCTS matching the given sku
 */
-const getProduct = (sku) => {
+export const getProduct = (sku) => {
     return PRODUCTS.filter(product => {
         return product.sku == sku;
     });
 }
-
-module.exports = {
-    addProduct,
-    getProducts,
-    getProduct
-};
