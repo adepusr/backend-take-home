@@ -7,6 +7,9 @@
     "start": "babel-node index.js",
     "test": "jest --no-cache"
   },
+  "jest": {
+    "verbose": true
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {

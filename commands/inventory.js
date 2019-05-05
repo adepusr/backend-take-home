@@ -10,11 +10,15 @@ export const stock = (sku, warehouseNumber, quantity) => {
     if (warehouse.length > 0) {
         if (getProduct(sku).length > 0) {
             if(warehouse[0].filled + quantity > warehouse[0].limit) {
-                warehouse[0].addToWarehouse(sku, warehouse[0].limit - warehouse[0].filled);
-                warehouse[0].updateFilled(warehouse[0].limit);
+                warehouse[0].addToWarehouse(sku, warehouse[0].limit - warehouse[0].filled)
+                    .then(() => {
+                        warehouse[0].updateFilled(warehouse[0].limit);
+                    });
             } else if(warehouse[0].filled + quantity <= warehouse[0].limit) {
-                warehouse[0].updateFilled(warehouse[0].filled + quantity);
-                warehouse[0].addToWarehouse(sku, quantity);
+                warehouse[0].addToWarehouse(sku, quantity)
+                    .then(() => {
+                        warehouse[0].updateFilled(warehouse[0].filled + quantity);
+                    });
             }
         } else {
             throw new Error('Please check PRODUCT sku');
@@ -36,13 +40,17 @@ export const unstock = (sku, warehouseNumber, quantity) => {
                 const productQuantity = product[0].quantity
                 if(productQuantity >= quantity) {
                     if((warehouse[0].filled - quantity >= 0)) {
-                        warehouse[0].removeFromWarehouse(sku, quantity);
-                        warehouse[0].updateFilled(warehouse[0].filled - quantity);
+                        warehouse[0].removeFromWarehouse(sku, quantity)
+                            .then(() => {
+                                warehouse[0].updateFilled(warehouse[0].filled - quantity);
+                            });
                     }
                 } else {
-                //    console.log("Filled:"+warehouse[0].filled +" productQuantity:"+productQuantity +" quantity:"+ quantity )
-                    warehouse[0].removeFromWarehouse(sku, quantity);
-                    warehouse[0].updateFilled(warehouse[0].filled - productQuantity);
+                    // console.log("Filled:"+warehouse[0].filled +" productQuantity:"+productQuantity +" quantity:"+ quantity )
+                    warehouse[0].removeFromWarehouse(sku, quantity)
+                        .then(() => {
+                            warehouse[0].updateFilled(warehouse[0].filled - productQuantity);
+                        });
                 }
             } else {
                 throw new Error('Please check PRODUCT sku');

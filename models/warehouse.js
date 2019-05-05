@@ -23,8 +23,8 @@ WareHouse.prototype.updateFilled = function (filled) {
     @params quantity type integer - quantity willing to add
     @desc Added given sku of quantity to the list of products in that perticular warehouse
 */
-WareHouse.prototype.addToWarehouse = function (sku, quantity) {
-    var prod = this.products.filter(product => {
+WareHouse.prototype.addToWarehouse = async function (sku, quantity) {
+    var prod = await this.products.filter(product => {
         return product.sku === sku;
     });
     if(prod.length > 0) {
@@ -41,8 +41,8 @@ WareHouse.prototype.addToWarehouse = function (sku, quantity) {
     @params quantity type integer - quantity willing to add
     @desc Removes given quantity of product with sku from list of products in that perticular warehouse
 */
-WareHouse.prototype.removeFromWarehouse = function (sku, quantity) {
-    var prod = this.products.filter(product => {
+WareHouse.prototype.removeFromWarehouse = async function (sku, quantity) {
+    var prod = await this.products.filter(product => {
         return product.sku === sku;
     });
     if(prod.length > 0) {
@@ -59,6 +59,7 @@ WareHouse.prototype.removeFromWarehouse = function (sku, quantity) {
     }
 }
 export default WareHouse;
+
 // ES6 version
 // export class WareHouse {
 //     constructor(warehouseNumber, limit = Number.MAX_VALUE, filled = 0, products = []) {
